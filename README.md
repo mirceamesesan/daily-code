@@ -9,3 +9,9 @@ Useful reads and documentation:
 - https://docs.astral.sh/uv/
 - https://youtu.be/qh98qOND6MI?si=FzJGVmxhdYc3q8ss
 
+When moving to a different machine, you can install dependencies with ```uv run``` and it will install all the dependencies from the ```pyproject.toml``` file and also will create a virtual environment for you.
+
+
+
+## Day 2
+Creating a fast-api with uvicorn and testing in Postman.
