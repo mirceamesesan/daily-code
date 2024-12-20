@@ -5,7 +5,7 @@ from pprint import pprint
 
 BASE_URL = "http://localhost:8000"
 
-item_example = Item(
+first_item = Item(
     name="Peacock Engine XK2",
     description="Engine with Quad-core processor and 16GB RAM",
     price=130.45,
@@ -14,7 +14,7 @@ item_example = Item(
 
 def get_items(item_id: int):
     ITEMS_URL = f"{BASE_URL}/items/{item_id}"
-    response = requests.get(ITEMS_URL, params={"q": "This is a query"})
+    response = requests.get(ITEMS_URL, params={"q": "This is a GET query"})
     data = response.json()
     pprint(data)
     return data
@@ -22,10 +22,10 @@ def get_items(item_id: int):
 
 def post_item(item):
     ITEM_POST_URL = f"{BASE_URL}/items/"
-    response = requests.post(ITEM_POST_URL, data=item)
+    response = requests.post(ITEM_POST_URL, json=item, params={"q": "This is a POST query"})
     data = response.json()
-    pprint(data)
+    print(data)
     return data
 
 get_items(3)
-post_item(item_example)
+post_item(first_item.__dict__)
