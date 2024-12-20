@@ -21,6 +21,22 @@ Accesing the api Endpoints with requests in Python.
 
 
 ## Day 4
+Creating a simple flask interface for a time-entry system. This should allow the user to:
+- Add a new time entry
+- List all time entries
+- Delete a time entry
+- Update a time entry
+
+The format of a time entry should contain the following fields:
+- description
+- start time
+- end time
+- project
+- client
+- tags
+
+This should be created using the tailwind css and flask.
+
 
 ## Day 5
 
