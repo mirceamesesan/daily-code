@@ -1,0 +1,43 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<section class="flex flex-col gap-4 h-screen py-4">
+
+    <div class="">
+        <h1 class="text-4xl font-bold">Tracker</h1>
+    </div>
+
+    <div class="flex flex-col bg-gray-200 rounded-xl p-4 gap-4">
+        <p class="text-md">Start adding your time entries below.</p>
+        
+        <!-- Description -->
+        <input type="text" 
+               class="h-12 rounded-md p-4 text-sm text-gray-500" 
+               name="Description" 
+               value="Write your description here..."
+               onfocus="if (this.value == 'Write your description here...') { this.value=''; }" 
+               onblur="if (this.value == '') { this.value='Write your description here...'; }"
+               id="">
+        
+        <!-- Time -->
+        <div class="flex items-center">
+            <input type="number" 
+               name="" 
+               class="h-12 rounded-md p-4 text-sm text-gray-500 w-1/4"
+               value="0"
+               onfocus="if (this.value == '0') { this.value=''; }"
+               onblur="if (this.value == '') { this.value='0'; }"
+               id="">
+            <span class="m-4 text-gray-500">h</span>
+            <!-- Button -->
+            <input type="button" 
+                value="Add Time Entry" 
+                class="h-12 w-full bg-blue-500 hover:bg-blue-600 text-white rounded-full cursor-pointer"/>
+        </div>
+        
+    </div>
+
+</section>
+
+{% endblock %}

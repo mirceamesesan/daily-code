@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your time is precious.</title>
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='build/css/output.css') }}">
+</head>
+
+<body class="mx-10">
+
+    {% block content %}{% endblock %}
+    
+</body>
+</html>

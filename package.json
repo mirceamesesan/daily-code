@@ -1,0 +1,11 @@
+{
+  "name": "tracker",
+  "version": "1.0.0",
+  "description": "A time tracking app",
+  "scripts": {
+    "dev": "npx tailwindcss build -i ./src/static/css/input.css -o ./src/static/build/css/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
