@@ -42,23 +42,21 @@
     <!-- List of entries -->
      <div class="flex flex-col">
         <div class="div-header flex justify-between text-sm text-gray-500 border-b-[1px] border-gray-300 py-2">
-            <p>Description</p>
-            <p>...</p>
+            <p>Current entries: {{ entries|count }}</p>
+            <p>{{ total_duration }} hours logged</p>
         </div>
+
+        {% for entry in entries %}
+
         <div class="div-rows flex justify-between text-md border-b-[1px] py-4 whitespace-nowrap gap-4">
-            <p class="overflow-hidden overflow-ellipsis">This is a first description</p>
+            <p class="overflow-hidden overflow-ellipsis">{{ entry.description }}</p>
             <div class="flex gap-4 items-center">
-                <p class="text-right w-fit">5.2 H</p>
+                <p class="text-right w-fit">{{ entry.duration }} h</p>
                 <a href="#" class="text-blue-500 text-sm">Remove</a>
             </div>
         </div>
-        <div class="div-rows flex justify-between text-md border-b-[1px] py-4 whitespace-nowrap gap-4">
-            <p class="overflow-hidden overflow-ellipsis">Modelling 375Street with materials and textures to be included later</p>
-            <div class="flex gap-4 items-center">
-                <p class="text-right w-fit">32.4 H</p>
-                <a href="#" class="text-blue-500 text-sm">Remove</a>
-            </div>
-        </div>
+
+        {% endfor %}
 
      </div>
 

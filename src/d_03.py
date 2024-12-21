@@ -12,7 +12,7 @@ first_item = Item(
     tax=15.50,
 )
 
-def get_items(item_id: int):
+def get_item(item_id: int):
     ITEMS_URL = f"{BASE_URL}/items/{item_id}"
     response = requests.get(ITEMS_URL, params={"q": "This is a GET query"})
     data = response.json()
@@ -27,5 +27,5 @@ def post_item(item):
     print(data)
     return data
 
-get_items(3)
+get_item(3)
 post_item(first_item.__dict__)
