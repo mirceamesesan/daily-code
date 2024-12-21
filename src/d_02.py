@@ -5,7 +5,11 @@ import uvicorn
 app = FastAPI()
 
 db_time_entries = [
-    {"id": 1, "description": "Meeting with the team", "duration": "10.44"},
+    {
+        "id": 1, 
+        "description": "Meeting with the team", 
+        "duration": "10.44"
+    },
     {
         "id": 2,
         "description": "Modelling 375Street with materials and textures to be included later",
