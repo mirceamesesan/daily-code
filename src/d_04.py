@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -17,6 +17,16 @@ def home():
     print(f"Entries: {len(entries)}")
     return render_template("home.html", entries=entries, total_duration=total)
 
+
+@app.route("/add_entry", methods=["POST"])
+def add_entry():
+    data = {
+        "description": request.form["description"],
+        "duration": request.form["duration"],
+    }
+    response = requests.post(url="http://localhost:8000/entry/", json=data)
+    print(response.status_code)
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -8,42 +8,44 @@
         <h1 class="text-4xl font-bold">Tracker</h1>
     </div>
 
-    <!-- Manual entry -->
-    <div class="flex flex-col bg-gray-200 rounded-xl p-4 gap-4">
-        <p class="text-md">Start adding your time entries below.</p>
+    <!-- Manual entry form -->
+    <form method="POST" action="/add_entry" class="flex flex-col bg-gray-200 rounded-xl p-4 gap-4" onsubmit="return validateForm()">
+        <div class="flex justify-between">
+            <p class="text-md">Start adding your time entries below.</p>
+            <p class="text-red-500 hidden" id="error-message">This is an error message</p>
+        </div>
         
         <!-- Description -->
         <input type="text" 
                class="h-12 rounded-md p-4 text-sm text-gray-500" 
-               name="Description" 
+               name="description" 
                value="Write your description here..."
                onfocus="if (this.value == 'Write your description here...') { this.value=''; }" 
                onblur="if (this.value == '') { this.value='Write your description here...'; }"
-               id="">
+               id="description">
         
         <!-- Time -->
         <div class="flex items-center">
             <input type="number" 
-               name="" 
+               name="duration" 
                class="h-12 rounded-md p-4 text-sm text-gray-500 w-1/4"
                value="0"
                onfocus="if (this.value == '0') { this.value=''; }"
                onblur="if (this.value == '') { this.value='0'; }"
-               id="">
+               id="duration">
             <span class="m-4 text-gray-500">h</span>
             <!-- Button -->
-            <input type="button" 
+            <input type="submit" 
                 value="Add Entry" 
                 class="h-12 w-full bg-blue-500 hover:bg-blue-600 text-white rounded-full cursor-pointer"/>
         </div>
         
-    </div>
+    </form>
 
     <!-- List of entries -->
      <div class="flex flex-col">
-        <div class="div-header flex justify-between text-sm text-gray-500 border-b-[1px] border-gray-300 py-2">
-            <p>Current entries: {{ entries|count }}</p>
-            <p>{{ total_duration }} </p>
+        <div class="div-header flex justify-start text-sm text-gray-500 border-b-[1px] border-gray-300 py-2">
+            <p>{{ entries|count }} entries | {{ total_duration }} hours</p>
         </div>
 
         {% for entry in entries %}

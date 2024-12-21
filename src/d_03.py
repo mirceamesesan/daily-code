@@ -1,15 +1,13 @@
 import requests
-from services.item import Item
+from services.time_entry import TimeEntry
 from pprint import pprint
 
 
 BASE_URL = "http://localhost:8000"
 
-first_item = Item(
-    name="Peacock Engine XK2",
-    description="Engine with Quad-core processor and 16GB RAM",
-    price=130.45,
-    tax=15.50,
+first_time_entry = TimeEntry(
+    description="Designed the Engine with Quad-core processor and 16GB RAM",
+    duration=10.45,
 )
 
 def get_item(item_id: int):
@@ -28,4 +26,4 @@ def post_item(item):
     return data
 
 get_item(3)
-post_item(first_item.__dict__)
+post_item(first_time_entry.__dict__)
