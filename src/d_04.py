@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, render_template, request, redirect
+from services.sudoku import Sudoku
 
 app = Flask(__name__)
 
@@ -27,6 +28,12 @@ def add_entry():
     response = requests.post(url="http://localhost:8000/entry/", json=data)
     print(response.status_code)
     return redirect("/")
+
+
+@app.route("/sudoku", methods=["GET", "POST"])
+def sudoku():
+    board = Sudoku(120).generate_board()
+    return render_template("sudoku.html", board=board)
 
 if __name__ == "__main__":
     app.run(debug=True)

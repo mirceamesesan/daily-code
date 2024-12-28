@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cell {
+    @apply
+        bg-white hover:bg-gray-300
+        flex justify-center items-center
+        text-sm
+        w-10 h-10;
+}
+
+.cell:nth-child(3n):not(:last-child) {
+    @apply
+        border-r-2 border-white;
+}
+
+.empty {
+    @apply
+        bg-gray-200 hover:bg-gray-300 
+        cursor-pointer;
+}
+
+.items {
+    @apply
+        flex flex-wrap gap-2 justify-center w-2/3;
+}
+
+.item {
+    @apply
+        bg-white hover:bg-gray-300
+        flex justify-center items-center
+        text-sm text-gray-500
+        w-10 h-10
+        border-[1px] border-gray-300
+        rounded-full;
+}
