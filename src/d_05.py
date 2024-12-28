@@ -1,30 +1,57 @@
 import sqlite3
 
-conn = sqlite3.connect('time_entries.db')
-db_cursor = conn.cursor()
-
-db_cursor.execute('''
-CREATE TABLE time_entries (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    description TEXT,
-    duration INTEGER)''')
-
-conn.commit()
 
 class SQLModel:
+
     def __init__(self):
-        self.conn = sqlite3.connect('time_entries.db')
+        self.conn = sqlite3.connect("time_entries.db")
+        self.conn.row_factory = sqlite3.Row
         self.cursor = self.conn.cursor()
 
-    def all(self):
-        self.cursor.execute('SELECT * FROM {}'.format(self.table_name))
-        return self.cursor.fetchall()
-    
-    def insert(self, **kwargs):
-        keys = ', '.join(kwargs.keys())
-        values = ', '.join(['"{}"'.format(value) for value in kwargs.values()])
-        self.cursor.execute('INSERT INTO {} ({}) VALUES ({})'.format(self.table_name, keys, values))
+        self.cursor.execute(
+            '''
+            CREATE TABLE if not exists time_entries(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            project TEXT,
+            client TEXT,
+            description TEXT,
+            duration FLOAT,
+            created_at TEXT
+            )''')
         self.conn.commit()
 
-    def __del__(self):
-        self.conn.close()
+
+    def insert_entry(self, 
+                     project:str,
+                     client:str,
+                     description:str, 
+                     duration:float,
+                     created_at:str):
+        self.cursor.execute(
+            '''
+            INSERT INTO time_entries(
+            project,
+            client,
+            description, 
+            duration,
+            created_at
+            ) VALUES (?, ?, ?, ?, ?)''',(project, client, description, duration, created_at),)
+        self.conn.commit()
+
+    
+    def remove_entry(self, entry_id):
+        self.cursor.execute(
+            '''
+            DELETE FROM time_entries WHERE id=?''', 
+            (entry_id,))
+        self.conn.commit()
+
+
+    def get_entries(self):
+        self.cursor.execute('''SELECT * FROM time_entries''')
+        return self.cursor.fetchall()
+
+
+    def get_entry(self, entry_id):
+        self.cursor.execute('''SELECT * FROM time_entries WHERE id=?''', (entry_id,))
+        return self.cursor.fetchone()

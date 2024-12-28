@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .cell {
     @apply
-        bg-white hover:bg-gray-300
+        bg-white hover:bg-gray-200
         flex justify-center items-center
         text-sm
         w-10 h-10;
@@ -30,8 +31,15 @@
     @apply
         bg-white hover:bg-gray-300
         flex justify-center items-center
-        text-sm text-gray-500
+        text-sm
         w-10 h-10
         border-[1px] border-gray-300
-        rounded-full;
+        rounded-full
+        cursor-pointer;
+}
+
+.selected {
+    @apply
+        bg-blue-200 hover:bg-blue-300
+        text-blue-600;
 }

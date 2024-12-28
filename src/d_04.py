@@ -1,6 +1,8 @@
 import requests
 from flask import Flask, render_template, request, redirect
 from services.sudoku import Sudoku
+from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -21,11 +23,23 @@ def home():
 
 @app.route("/add_entry", methods=["POST"])
 def add_entry():
+    duration = request.form["duration"]
     data = {
+        "project": request.form["project"],
+        "client": request.form["client"],
         "description": request.form["description"],
-        "duration": request.form["duration"],
+        "duration": duration,
+        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
     response = requests.post(url="http://localhost:8000/entry/", json=data)
+    print(f"Added entry with response code: {response.status_code}")
+    return redirect("/")
+
+
+@app.route("/delete_entry/<int:entry_id>", methods=["POST"])
+def delete_entry(entry_id):
+    print("Deleting entry")
+    response = requests.delete(url=f"http://localhost:8000/entry/{entry_id}")
     print(response.status_code)
     return redirect("/")
 
