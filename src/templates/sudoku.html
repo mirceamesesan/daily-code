@@ -1,9 +1,12 @@
 {% extends 'layout/base.html' %}
 
+{% include 'common/nav.html' %}
+
 {% block content %}
 
-<section class="w-full h-screen flex flex-col items-center justify-center gap-12">
-    <div class="flex flex-col items-center gap-8 w-2/3">
+<section class="main-section centered">
+
+    <div class="page-title">
         <h1 class="font-bold text-3xl">Daily Sudoku</h1>
         <p class="text-center text-sm">
             Generated using the dokusan library for generation and following a tutorial on youtube. 
@@ -13,6 +16,7 @@
             <button type="submit" class="rounded-full border-2 border-gray-200 bg-transparent hover:bg-gray-200 h-12 w-fit px-10">Refresh</button>
         </form>
     </div>
+
     <div id="sudoku" class="sudoku">
         {% for line in board %}   
 
@@ -39,6 +43,7 @@
             <div class="item">{{ item }}</div>
         {% endfor %}
     </div>
+    
 </section>
 
 {% endblock %}

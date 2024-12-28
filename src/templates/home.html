@@ -1,11 +1,17 @@
 {% extends 'layout/base.html' %}
 
+{% include 'common/nav.html' %}
+
 {% block content %}
 
-<section class="flex flex-col gap-4 h-screen py-4">
+<section class="main-section">
 
-    <div class="">
-        <h1 class="text-4xl font-bold">Tracker</h1>
+    <div class="page-title">
+        <h1 class="font-bold text-3xl">Daily Tracking</h1>
+        <p class="text-center text-sm">
+            This tool helps you track your time efficiently and keep your tasks visible.
+            <a class="text-blue-500" href="https://pypi.org/project/dokusan/" target="_blank">Login to get started</a>.
+        </p>
     </div>
 
     <!-- Manual entry form -->

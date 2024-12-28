@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+nav {
+    @apply
+        flex
+        w-full
+        p-4;
+}
+
+.main-section {
+    @apply
+        flex flex-col 
+        gap-10 
+        h-screen w-full 
+        py-4;
+}
+
+.centered {
+    @apply
+        items-center;
+}
+
+.page-title {
+    @apply
+        flex flex-col 
+        items-center 
+        gap-4 
+        w-full
+        py-20;
+}
 
 .cell {
     @apply
