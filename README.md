@@ -33,6 +33,9 @@ Linking a database using sqlite3 to store our time entries.
 Updating the flask interface to use the database to store the time entries.
 - Delete a time entry
 - Update a time entry
+Creating a sudoku game to include in the flask interface. solver using
+a backtracking algoprithm. Sudoku game will be generated using
+dokusan library.
 
 ## Day 7
 Complete the flask interface time-entry management with the following fields:

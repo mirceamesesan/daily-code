@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dokusan>=0.1.0",
     "fastapi>=0.115.6",
     "flask>=3.1.0",
     "pandas>=2.2.3",
